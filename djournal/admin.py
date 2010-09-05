@@ -18,6 +18,10 @@ class EntryAdmin(admin.ModelAdmin):
         }),
     )
 
+    list_display = (
+        'title', 'subtitle', 'slug', 'author', 'created', 'modified',
+    )
+
     def save_model(self, request, obj, form, change):
         if not change:
             obj.author = request.user
