@@ -25,6 +25,10 @@ class EntryAdmin(admin.ModelAdmin):
         'title', 'subtitle', 'slug', 'author', 'created', 'modified',
     )
 
+    search_fields = (
+        'title', 'subtitle', 'slug', 'body', 'teaser',
+    )
+
     def save_model(self, request, obj, form, change):
         if not change:
             obj.author = request.user
