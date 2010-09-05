@@ -18,3 +18,7 @@ class Entry(models.Model):
 
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = 'Entry'
+        verbose_name_plural = 'Entries'
