@@ -25,6 +25,10 @@ class EntryAdmin(admin.ModelAdmin):
         'title', 'subtitle', 'slug', 'author', 'created', 'modified',
     )
 
+    list_filter = (
+        'author',
+    )
+
     search_fields = (
         'title', 'subtitle', 'slug', 'body', 'teaser',
     )
