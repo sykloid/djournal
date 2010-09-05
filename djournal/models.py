@@ -22,3 +22,6 @@ class Entry(models.Model):
     class Meta:
         verbose_name = 'Entry'
         verbose_name_plural = 'Entries'
+
+        get_latest_by = 'created'
+        ordering = ('-created',)
