@@ -14,7 +14,7 @@ class EntryAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Meta', {
-            'fields': ('title', 'subtitle', 'slug'),
+            'fields': ('title', 'subtitle', 'slug', 'status'),
         }),
         ('Content', {
             'fields': ('teaser', 'body'),
@@ -22,11 +22,12 @@ class EntryAdmin(admin.ModelAdmin):
     )
 
     list_display = (
-        'title', 'subtitle', 'slug', 'author', 'created', 'modified',
+        'title', 'subtitle', 'slug', 'author', 'created', 'modified', 'status',
     )
 
     list_filter = (
         'author',
+        'status',
     )
 
     prepopulated_fields = {

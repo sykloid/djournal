@@ -3,6 +3,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from djournal import managers
+
 class Entry(models.Model):
     '''Represents a Djournal entry.'''
 
@@ -18,6 +20,27 @@ class Entry(models.Model):
 
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)
+
+    PUBLIC_ENTRY_STATUS = 'public'
+    PRIVATE_ENTRY_STATUS = 'private'
+    DRAFT_ENTRY_STATUS = 'draft'
+
+    ENTRY_STATUSES = (
+        (PUBLIC_ENTRY_STATUS, 'Public'),
+        (PRIVATE_ENTRY_STATUS, 'Private'),
+        (DRAFT_ENTRY_STATUS, 'Draft'),
+    )
+
+    status = models.CharField(
+        max_length=16,
+        choices=ENTRY_STATUSES,
+        default=PUBLIC_ENTRY_STATUS
+    )
+
+    objects = models.Manager()
+    public = managers.PublicEntryManager()
+    private = managers.PrivateEntryManager()
+    draft = managers.DraftEntryManager()
 
     class Meta:
         verbose_name = 'Entry'
