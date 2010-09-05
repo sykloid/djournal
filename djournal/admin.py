@@ -7,6 +7,9 @@ from django.contrib import admin
 from djournal.models import Entry
 
 class EntryAdmin(admin.ModelAdmin):
+
+    date_hierarchy = 'created'
+
     exclude = ('author', 'created', 'modified')
 
     fieldsets = (
