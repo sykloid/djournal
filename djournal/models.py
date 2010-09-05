@@ -25,3 +25,9 @@ class Entry(models.Model):
 
         get_latest_by = 'created'
         ordering = ('-created',)
+
+    def __str__(self):
+        return self.title
+
+    def __unicode__(self):
+        return self.title
