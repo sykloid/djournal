@@ -3,6 +3,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from djournal import managers
+
 class Entry(models.Model):
     '''Represents a Djournal entry.'''
 
@@ -34,6 +36,11 @@ class Entry(models.Model):
         choices=ENTRY_STATUSES,
         default=PUBLIC_ENTRY_STATUS
     )
+
+    objects = models.Manager()
+    public = managers.PublicEntryManager()
+    private = managers.PrivateEntryManager()
+    draft = managers.DraftEntryManager()
 
     class Meta:
         verbose_name = 'Entry'
