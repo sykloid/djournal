@@ -9,6 +9,15 @@ from djournal.models import Entry
 class EntryAdmin(admin.ModelAdmin):
     exclude = ('author', 'created', 'modified')
 
+    fieldsets = (
+        ('Meta', {
+            'fields': ('title', 'subtitle', 'slug'),
+        }),
+        ('Content', {
+            'fields': ('teaser', 'body'),
+        }),
+    )
+
     def save_model(self, request, obj, form, change):
         if not change:
             obj.author = request.user
