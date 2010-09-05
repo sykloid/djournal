@@ -19,6 +19,22 @@ class Entry(models.Model):
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)
 
+    PUBLIC_ENTRY_STATUS = 'public'
+    PRIVATE_ENTRY_STATUS = 'private'
+    DRAFT_ENTRY_STATUS = 'draft'
+
+    ENTRY_STATUSES = (
+        (PUBLIC_ENTRY_STATUS, 'Public'),
+        (PRIVATE_ENTRY_STATUS, 'Private'),
+        (DRAFT_ENTRY_STATUS, 'Draft'),
+    )
+
+    status = models.CharField(
+        max_length=16,
+        choices=ENTRY_STATUSES,
+        default=PUBLIC_ENTRY_STATUS
+    )
+
     class Meta:
         verbose_name = 'Entry'
         verbose_name_plural = 'Entries'
