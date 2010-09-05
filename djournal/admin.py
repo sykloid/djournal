@@ -29,6 +29,10 @@ class EntryAdmin(admin.ModelAdmin):
         'author',
     )
 
+    prepopulated_fields = {
+        'slug': ('title',),
+    }
+
     search_fields = (
         'title', 'subtitle', 'slug', 'body', 'teaser',
     )
