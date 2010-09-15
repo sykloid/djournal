@@ -11,7 +11,7 @@ setup(
     author = 'P.C. Shyamshankar',
     author_email = 'sykora@lucentbeing.com',
 
-    packages = ['djournal'],
+    packages = ['djournal', 'djournal.migrations'],
 
     url = 'http://github.com/sykora/djournal/',
     license = 'GNU General Public License v3.0',
