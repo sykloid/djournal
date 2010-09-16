@@ -21,6 +21,9 @@ class Entry(models.Model):
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)
 
+    teaser_html = models.TextField(blank=True, editable=False)
+    body_html = models.TextField(blank=True, editable=False)
+
     PUBLIC_ENTRY_STATUS = 'public'
     PRIVATE_ENTRY_STATUS = 'private'
     DRAFT_ENTRY_STATUS = 'draft'
