@@ -5,6 +5,11 @@ from django.db import models
 
 from djournal import managers
 
+try:
+    from ripwrap.core import formatter
+except ImportError:
+    formatter = lambda text: text
+
 class Entry(models.Model):
     '''Represents a Djournal entry.'''
 
@@ -20,6 +25,9 @@ class Entry(models.Model):
 
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)
+
+    teaser_html = models.TextField(blank=True, editable=False)
+    body_html = models.TextField(blank=True, editable=False)
 
     PUBLIC_ENTRY_STATUS = 'public'
     PRIVATE_ENTRY_STATUS = 'private'
@@ -54,3 +62,9 @@ class Entry(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.teaser_html = formatter.render(self.teaser)
+        self.body_html = formatter.render(self.body)
+
+        super(Entry, self).save()
