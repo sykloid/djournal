@@ -2,7 +2,7 @@
 
 from django.conf.urls.defaults import *
 
-from djournal.feeds import EntryFeed
+from djournal.feeds import EntryFeed, TaggedEntryFeed
 from djournal.models import Entry
 
 urlpatterns = patterns('',
@@ -10,6 +10,9 @@ urlpatterns = patterns('',
         name='djournal_entry_index',
     ),
     url(r'^feed/$', EntryFeed()),
+    url(r'^tag/(?P<slug>.*)/feed/$', TaggedEntryFeed(),
+        name='djournal_tagged_entry_index',
+    ),
     url(r'^tag/(?P<slug>.*)/$', 'djournal.views.tagged_entry_index',
         name='djournal_tagged_entry_index',
     ),
