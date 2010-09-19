@@ -3,6 +3,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from taggit.managers import TaggableManager
+
 from djournal import managers
 
 try:
@@ -22,6 +24,8 @@ class Entry(models.Model):
 
     created = models.DateTimeField()
     modified = models.DateTimeField()
+
+    tags = TaggableManager()
 
     teaser = models.TextField(blank=True)
     body = models.TextField(blank=True)

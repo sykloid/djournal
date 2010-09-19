@@ -14,7 +14,7 @@ class EntryAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Meta', {
-            'fields': ('title', 'subtitle', 'slug', 'status'),
+            'fields': ('title', 'subtitle', 'slug', 'status', 'tags'),
         }),
         ('Content', {
             'fields': ('teaser', 'body'),
