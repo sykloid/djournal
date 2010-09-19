@@ -72,3 +72,7 @@ class Entry(models.Model):
         self.body_html = formatter.render(self.body)
 
         super(Entry, self).save()
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('djournal_entry_detail', [], {'slug': self.slug})
