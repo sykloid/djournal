@@ -4,8 +4,12 @@ from django.conf.urls.defaults import *
 
 from djournal.feeds import EntryFeed, TaggedEntryFeed
 from djournal.models import Entry
+from djournal.sitemaps import EntrySitemap
 
 urlpatterns = patterns('',
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+        {'sitemaps': {'entry': EntrySitemap}},
+    ),
     url(r'^$', 'djournal.views.entry_index',
         name='djournal_entry_index',
     ),
