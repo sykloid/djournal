@@ -8,9 +8,9 @@ from taggit.managers import TaggableManager
 from djournal import managers
 
 try:
-    from ripwrap.core import formatter
+    from ripwrap.core import render
 except ImportError:
-    formatter = lambda text: text
+    render = lambda text: text
 
 class Entry(models.Model):
     '''Represents a Djournal entry.'''
@@ -68,8 +68,8 @@ class Entry(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.teaser_html = formatter.render(self.teaser)
-        self.body_html = formatter.render(self.body)
+        self.teaser_html = render(self.teaser)
+        self.body_html = render(self.body)
 
         super(Entry, self).save()
 
