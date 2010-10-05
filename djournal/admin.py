@@ -55,4 +55,10 @@ class EntryAdmin(admin.ModelAdmin):
 
     slug_link.allow_tags = True
 
+    def format_created(self, obj):
+        return obj.created.strftime("%Y-%m-%d %H:%M")
+
+    def format_modified(self, obj):
+        return obj.modified.strftime("%Y-%m-%d %H:%M")
+
 admin.site.register(Entry, EntryAdmin)
