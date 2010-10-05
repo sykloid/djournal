@@ -22,7 +22,7 @@ class EntryAdmin(admin.ModelAdmin):
     )
 
     list_display = (
-        'title', 'subtitle', 'slug', 'author', 'created', 'modified', 'status',
+        'title', 'subtitle', 'slug_link', 'author', 'created', 'modified', 'status',
     )
 
     list_filter = (
