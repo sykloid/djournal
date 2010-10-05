@@ -11,6 +11,10 @@ from taggit.models import Tag
 from djournal.models import Entry
 
 class EntryFeed(Feed):
+
+    title_template = 'djournal/feeds/entry_feed_item_title.html'
+    description_template = 'djournal/feeds/entry_feed_item_description.html'
+
     def title(self):
         template = get_template('djournal/feeds/entry_feed_title.html')
         return template.render(Context({}))
@@ -35,6 +39,10 @@ class EntryFeed(Feed):
         return item.get_absolute_url()
 
 class TaggedEntryFeed(Feed):
+
+    title_template = 'djournal/feeds/tagged_entry_feed_item_title.html'
+    description_template = 'djournal/feeds/tagged_entry_feed_item_description.html'
+
     def get_object(self, request, slug):
         return get_object_or_404(Tag, slug=slug)
 
