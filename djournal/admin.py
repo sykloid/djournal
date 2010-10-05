@@ -47,4 +47,12 @@ class EntryAdmin(admin.ModelAdmin):
 
         obj.save()
 
+    def slug_link(self, obj):
+        return '<a href="{url}">{slug}</a>'.format(
+            url=obj.get_absolute_url(), 
+            slug=obj.slug
+        )
+
+    slug_link.allow_tags = True
+
 admin.site.register(Entry, EntryAdmin)
