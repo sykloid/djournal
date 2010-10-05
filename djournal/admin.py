@@ -22,7 +22,8 @@ class EntryAdmin(admin.ModelAdmin):
     )
 
     list_display = (
-        'title', 'subtitle', 'slug_link', 'author', 'created', 'modified', 'status',
+        'title', 'subtitle', 'slug_link', 'author',
+        'format_created', 'format_modified', 'status',
     )
 
     list_filter = (
@@ -54,5 +55,11 @@ class EntryAdmin(admin.ModelAdmin):
         )
 
     slug_link.allow_tags = True
+
+    def format_created(self, obj):
+        return obj.created.strftime("%Y-%m-%d %H:%M")
+
+    def format_modified(self, obj):
+        return obj.modified.strftime("%Y-%m-%d %H:%M")
 
 admin.site.register(Entry, EntryAdmin)
