@@ -22,7 +22,7 @@ class EntryAdmin(admin.ModelAdmin):
     )
 
     list_display = (
-        'title', 'subtitle', 'slug', 'author', 'created', 'modified', 'status',
+        'title', 'subtitle', 'slug_link', 'author', 'created', 'modified', 'status',
     )
 
     list_filter = (
@@ -46,5 +46,13 @@ class EntryAdmin(admin.ModelAdmin):
         obj.modified = datetime.now()
 
         obj.save()
+
+    def slug_link(self, obj):
+        return '<a href="{url}">{slug}</a>'.format(
+            url=obj.get_absolute_url(), 
+            slug=obj.slug
+        )
+
+    slug_link.allow_tags = True
 
 admin.site.register(Entry, EntryAdmin)
