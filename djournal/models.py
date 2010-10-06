@@ -1,5 +1,7 @@
 '''Models for Djournal.'''
 
+from datetime import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -22,8 +24,8 @@ class Entry(models.Model):
 
     author = models.ForeignKey(User, related_name='entries')
 
-    created = models.DateTimeField()
-    modified = models.DateTimeField()
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
 
     tags = TaggableManager()
 
