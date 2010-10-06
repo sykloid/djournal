@@ -7,3 +7,11 @@
       set to current date and time.
     * Column titles for slug, created and modified fields in admin are now
       proper at "Slug", "Created" and "Modified".
+
+0.6.0
+    * The slug field in admin listings now links to the entry on-site.
+    * Created and Modified dates are now formatted a bit more cleanly.
+    * Templates for the titles and descriptions of individual feed items can now
+      be overriden.
+    * The feed URL patterns now have proper names, which can be used via the
+      {% url %} templatetag.
