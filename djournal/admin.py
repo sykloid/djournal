@@ -10,11 +10,12 @@ class EntryAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'created'
 
-    exclude = ('author', 'created', 'modified')
+    exclude = ('author',)
 
     fieldsets = (
         ('Meta', {
-            'fields': ('title', 'subtitle', 'slug', 'status', 'tags'),
+            'fields': ('title', 'subtitle', 'slug', 'status', 'tags',
+                       'created', 'modified'),
         }),
         ('Content', {
             'fields': ('teaser', 'body'),
@@ -42,9 +43,6 @@ class EntryAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not change:
             obj.author = request.user
-            obj.created = datetime.now()
-
-        obj.modified = datetime.now()
 
         obj.save()
 
