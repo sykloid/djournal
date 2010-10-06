@@ -1,0 +1,9 @@
+###########
+ Changelog
+###########
+
+0.6.1
+    * Created/Modified dates are now shown in the admin, and are automatically
+      set to current date and time.
+    * Column titles for slug, created and modified fields in admin are now
+      proper at "Slug", "Created" and "Modified".
