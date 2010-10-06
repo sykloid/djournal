@@ -15,3 +15,7 @@
       be overriden.
     * The feed URL patterns now have proper names, which can be used via the
       {% url %} templatetag.
+
+0.5.1
+    * Djournal no longer throws when ripwrap can't be found (or can't be
+      imported) and formatter has no 'render' attribute.
